@@ -1,2 +1,15 @@
 # auxillary-gibbs-sampler
 In this repo performance diagnostics of two different Bayesian procedures for simulating the posterior distribution of a set of coefficients in a probit regression model  are compared. The simulation methods compared are the Metropolis algorithm and the auxiliary Gibbs algorithm. These procedures are compared using both a simulated dataset and a real dataset and for each dataset through different choices of priors, initializations of the coefficients and parameters for the proposal distributions.
+
+Both the Metropolis and Gibbs Sampler algorithms are well studied and proven to converge, resulting in a perfect sampling from the target distribution. In fact, results in this paper between the two samplers are seen to be very similar in terms of the distribution of the posteriors and their summaries. Thus, the primary basis for comparison must be their efficiency. 
+
+In terms of efficiency a comment can be made on two aspects, the number of discarded samples before the chain converges, the length of the cycle size needed to create an effective independent sample and the time needed to run the algorithm. Note that, both the first two are a measure of the number of additional iterations required from a chain before it serves its purpose.
+
+Regarding the burn-in, in all examples the Auxillary Gibbs sampler is seen to converge quicker than the Metropolis sampler and can be considered more efficient. This was indeed the expected result as the introduction of the auxiliary variables allows to leverage the conjugate prior, however this is also seen to be the case when a non-informative improper prior is used.  
+
+Considering the cycle size used in the models and the running time, the Auxiliary Gibbs Sampler performs better than the Metropolis algorithm.
+When comparing the cycle size, the Auxillary Gibbs sampler requires significantly fewer steps across all models run on the real dataset. 
+Contrary to expectations, for the sample data, the latter does not differentiate from Metropolis in simulated data. 
+On the other hand, in both real and simulated data, Auxiliary Gibbs Sampling has a much lower running time.
+
+Finally, while frequentest methodologies for regression are widely studied the Bayesian framework of similar problems are less ubiquitous. This is indeed a shame as a Bayesian approach allows researchers to study more than point estimates and can fortify an experiment by assigning a prior distribution according to the literature on the topic. However, while the use of priors represents a strong tool in the researcher's arsenal, this paper has also shown that it should be used with care, as misguided priors can strongly influence a model's final result. One suggestion is for researchers to study a dual problem, running both a null model using an agnostic initialization and prior and comparing it to a full model. This can serve to add insight on the significance of the theory guiding a researcher's choice of prior distribution and initializing values.
