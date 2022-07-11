@@ -1,2 +1,2 @@
 # auxillary-gibbs-sampler
-Code and discussion for comparing an auxiliary Gibbs bayesian sampler and Metropolis sampler
+In this repo performance diagnostics of two different Bayesian procedures for simulating the posterior distribution of a set of coefficients in a probit regression model  are compared. The simulation methods compared are the Metropolis algorithm and the auxiliary Gibbs algorithm. These procedures are compared using both a simulated dataset and a real dataset and for each dataset through different choices of priors, initializations of the coefficients and parameters for the proposal distributions.
